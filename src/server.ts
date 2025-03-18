@@ -14,8 +14,9 @@ const app: Express = express();
 
 const port = process.env.PORT;
 
-app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.use(userRouter);

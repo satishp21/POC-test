@@ -64,7 +64,7 @@ productRouter.get("/", fetchAllProducts);
  *     parameters:
  *       - in: query
  *         name: threshold
- *         description: The stock threshold (default: 10)
+ *         description: "The stock threshold (default: 10)"
  *         schema:
  *           type: integer
  *     responses:
@@ -108,6 +108,8 @@ productRouter.get("/:id", fetchProductById);
  *     description: Create a new product. Requires admin authorization.
  *     tags:
  *       - Products
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: body
  *         name: productData
@@ -156,6 +158,8 @@ productRouter.post("/", authenticateJWT, authorizeRole("admin"), addProduct);
  *     description: Update an existing product. Requires admin authorization.
  *     tags:
  *       - Products
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -209,6 +213,8 @@ productRouter.put("/:id", authenticateJWT, editProduct);
  *     description: Update the stock quantity of a product. Requires authentication.
  *     tags:
  *       - Products
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -248,6 +254,8 @@ productRouter.put("/:id/stock", authenticateJWT, editStock);
  *     description: Delete an existing product. Requires admin authorization.
  *     tags:
  *       - Products
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

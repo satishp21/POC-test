@@ -46,6 +46,8 @@ userRouter.post("/login", login);
  *     description: Register a new user. Requires admin authorization.
  *     tags:
  *       - User Auth
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: body
  *         name: userData
