@@ -3,9 +3,9 @@ import swaggerJsdoc from "swagger-jsdoc";
 const options = {
   swaggerDefinition: {
     info: {
-      title: "Caching API",
+      title: "Admin API",
       version: "1.0.0",
-      description: "Documentation for caching API",
+      description: "Documentation for Admin API",
     },
     tags: [
       {
@@ -13,7 +13,19 @@ const options = {
         description: "User related operations",
       },
     ],
+    securityDefinitions: {
+      BearerAuth: {
+        type: "apiKey",
+        in: "header",
+        name: "Authorization",
+      },
+    },
   },
+  security: [
+    {
+      BearerAuth: [],
+    },
+  ],
   apis: ["./src/routes/*.ts", "./dist/routes/*.js"], // Specify the path to your API routes files
 };
 
